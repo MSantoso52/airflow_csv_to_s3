@@ -1,6 +1,5 @@
 from airflow.decorators import dag, task
 from datetime import datetime, timedelta
-from airflow.providers.postgres.hooks.postgres import PostgresHook
 from airflow.providers.amazon.aws.hooks.s3 import S3Hook
 
 import pandas as pd
@@ -91,6 +90,6 @@ def csv_to_s3():
 
     extracted_df = dataExtraction(FILE_PATH)
     transformed_df = dataTransformation(extracted_df)
-    loadData(extracted_df, bucket_name="airflow-csv-upload")
+    loadData(transformed_df, bucket_name="airflow-csv-upload")
 
 etl = csv_to_s3()
