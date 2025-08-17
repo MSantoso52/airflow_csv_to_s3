@@ -1,6 +1,25 @@
 # airflow_csv_to_s3
+# *Overview*
+# *Prerequisites*
+# *Project Flow*
 Automate Data Ingestion csv into S3 AWS using Airflow:
-1. Load necessary libs -- airflow.decorators, airflow.providers, pandas, datetime
-2. Provide -- file path, s3 connection id
-3. ETL flow -- data extraction -> data transformation -> load s3
-4. Close connection -- automate with context
+1. Load necessary libs
+   ```python3
+   from airflow.decorators import dag, task
+   from datetime import datetime, timedelta
+   from airflow.providers.amazon.aws.hooks.s3 import S3Hook
+
+   import pandas as pd
+   ```
+3. Provide -- file path, s3 connection id
+   ```python3
+   FILE_PATH = "/home/mulyo/Learning/ETL_CSV_To_PostrgeSQL/CO2 Emission Country.csv"
+
+   AWS_CONN_ID = 's3_conn'
+   ```
+5. ETL flow -- data extraction -> data transformation -> load s3
+   ```python3
+   extracted_df = dataExtraction(FILE_PATH)
+   transformed_df = dataTransformation(extracted_df)
+   loadData(transformed_df, bucket_name="airflow-csv-upload")
+   ```
