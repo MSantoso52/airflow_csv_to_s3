@@ -1,4 +1,5 @@
 # airflow_csv_to_s3
+![A screenshot of the project interface](etl_csv_s3.jpg)
 # *Overview*
 Project repo to conduct ETL automatically orchestration by Apache Airflow, this repo is about how to step-by-step conduct ETL using Airflow using CSV file as data source, data transformation (removing duplicates, removing missing value) in python code then transforming into AWS S3 cloud service.
 # *Prerequisites*
